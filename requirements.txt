@@ -1,0 +1,13 @@
+
+aiogram>=3.0.0
+yt-dlp>=2023.10.0
+pydantic-settings
+python-dotenv
+babel
+gunicorn  # if running behind WSGI
+aioredis  # optional
+SQLAlchemy  # optional
+aiomysql
+aiohttp-socks
+cryptography
+

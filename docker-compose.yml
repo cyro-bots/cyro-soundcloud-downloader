@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  soundcloud_bot:
+    build: .
+    container_name: soundcloud_bot
+    restart: always
+    network_mode: "host"   # <--- share host network
+    env_file:
+      - .env
+    volumes:
+      - .:/app
+
+  soundcloud_db:
+    image: mysql:8.1
+    container_name: soundcloud_db
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: soundcloud_bot
+    volumes:
+      - ./.docker-conf/mysql/:/var/lib/mysql
+    ports:
+      - "3306:3306"   # expose DB to host
+

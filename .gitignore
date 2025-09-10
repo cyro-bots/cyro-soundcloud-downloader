@@ -1,4 +1,68 @@
+# Byte-compiled / optimized / DLL files
 __pycache__/
-*/logs/
-.git/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+env/
+ENV/
+.venv/
+
+# Distribution / packaging
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Logs
+logs/
+*.log
+
+# Downloads
+downloads/
+
+# Locales (compiled files)
+locales/**/*.mo
+locales/**/*.pot
+
+# Environment variables
 .env
+.env.*.local
+
+# PyCharm / IDEs
+.idea/
+*.iml
+*.ipr
+*.iws
+
+# VSCode
+.vscode/
+
+# MySQL / database files (if any local backups)
+*.sql
+*.sqlite3
+
+# Coverage reports
+htmlcov/
+.coverage
+.coverage.*
+
+# pytest cache
+.pytest_cache/
+
+# Mypy cache
+.mypy_cache/
+
+# Pylint cache
+pylint-report.txt
+pylint-global.txt
+
+# Misc
+*.DS_Store
+
+#Docker
+.docker-conf/
