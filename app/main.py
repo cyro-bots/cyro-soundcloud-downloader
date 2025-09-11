@@ -4,16 +4,17 @@ from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.client.session.aiohttp import AiohttpSession
 
+from . import logger
 from .config import settings
 from .database import init_db
 from .handlers.callbacks import router as callbacks_router
 from .handlers.commands import router as commands_router
+from .handlers.messages import router as messages_router
 from .i18n import i18n_middleware
-from .logging_conf import setup_logging
+from .services.downloader import SoundCloudDownloader
 
 
 async def main():
-    logger = setup_logging()
     if settings.PROXY:
         session = AiohttpSession(proxy=settings.PROXY)
     else:
@@ -24,7 +25,8 @@ async def main():
         session=session,
         default=DefaultBotProperties(parse_mode="HTML"),
     )
-    dp = Dispatcher()
+    downloader = SoundCloudDownloader(settings.PROXY, debug=settings.DEBUG)
+    dp = Dispatcher(downloader=downloader)
     dp.update.middleware(i18n_middleware)
 
     # Create tables
@@ -33,6 +35,7 @@ async def main():
     # Include routers
     dp.include_router(commands_router)
     dp.include_router(callbacks_router)
+    dp.include_router(messages_router)
 
     logger.info("Bot is starting...")
     try:

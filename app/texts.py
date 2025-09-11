@@ -20,3 +20,6 @@ class Messages:
     LANGUAGE_CHANGED = _(
         "Your language has been successfully changed 🎉\nPlease restart the bot /start"
     )
+    INVALID_URL = _("❌ Please send a valid SoundCloud URL")
+    NO_AUDIO_FORMATS = _("❌ No data found for this track")
+    DOWNLOAD_ERROR = _("❌ Download failed. Please try again")

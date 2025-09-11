@@ -41,7 +41,7 @@ def setup_logging():
     logging.getLogger("sqlalchemy.pool").setLevel(logging.WARNING)
     logging.getLogger("sqlalchemy.dialects").setLevel(logging.WARNING)
 
-    logger = logging.getLogger("bot")
+    logger = logging.getLogger(__name__)
     logger.info(f"Logging is configured. Log file: {log_file}")
 
     return logger

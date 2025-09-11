@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2025-09-10 23:40+0330\n"
+"POT-Creation-Date: 2025-09-11 23:30+0330\n"
 "PO-Revision-Date: 2025-09-09 01:39+0330\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: fa\n"
@@ -40,4 +40,15 @@ msgstr ""
 "زبان شما با موفقیت به فارسی تغییر پیدا کرد 🇮🇷\n"
 "لطفا ربات را مجددا استارت کنید /start"
 
+#: app/texts.py:23
+msgid "❌ Please send a valid SoundCloud URL"
+msgstr "❌ لطفا یک لینک معتبر ارسال کنید"
+
+#: app/texts.py:24
+msgid "❌ No data found for this track"
+msgstr "❌ برای این موزیک داده‌ای پیدا نشد"
+
+#: app/texts.py:25
+msgid "❌ Download failed. Please try again"
+msgstr "❌ دانلود انجام نشد. لطفا دوباره تلاش کنید"
 

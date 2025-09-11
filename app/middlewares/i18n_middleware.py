@@ -11,9 +11,6 @@ class CustomI18nMiddleware(I18nMiddleware):
         Telegram `language_code`.
         """
 
-        print("##############################")
-        print(data)
-        print("##############################")
         if "locale" in data:
             return data["locale"]
 
