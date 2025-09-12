@@ -1,7 +1,7 @@
 from aiogram import F
 from aiogram.types import CallbackQuery
 
-from app.database.models import User
+from app.database import User
 from app.i18n import ctx_locale
 from app.texts import Messages
 
