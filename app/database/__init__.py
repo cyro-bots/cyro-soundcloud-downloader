@@ -29,3 +29,7 @@ async def init_db():
 
 def get_session():
     return async_session()
+
+
+from .channels import Channel
+from .users import User

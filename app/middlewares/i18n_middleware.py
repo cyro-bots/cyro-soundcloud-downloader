@@ -1,7 +1,7 @@
 from aiogram.types import TelegramObject
 from aiogram.utils.i18n import I18nMiddleware
 
-from app.database.models import User
+from app.database import User
 
 
 class CustomI18nMiddleware(I18nMiddleware):
