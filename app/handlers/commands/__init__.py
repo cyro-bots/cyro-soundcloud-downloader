@@ -4,4 +4,4 @@ from aiogram import Router
 router = Router()
 
 # Import handlers so they register on import
-from . import language, start
+from . import admin, language, start
