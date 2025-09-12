@@ -1,8 +1,9 @@
-import logging
+import os
 
 from aiogram import Dispatcher, F
 from aiogram.types import FSInputFile, Message, URLInputFile
 
+from app import logger
 from app.services.downloader import SoundCloudDownloader
 from app.texts import Messages
 from app.utils.helpers import sanitize_filename
@@ -24,7 +25,6 @@ async def handle_soundcloud_url(message: Message, dispatcher: Dispatcher):
 
     try:
         info = await downloader.get_track_info(url)
-
         if not info:
             await message.reply(str(Messages.NO_AUDIO_FORMATS))
             return
@@ -76,15 +76,21 @@ async def handle_soundcloud_url(message: Message, dispatcher: Dispatcher):
             safe_title = sanitize_filename(info.get("title") or "audio")
             audio = FSInputFile(audio_file_path, filename=safe_title)
             artwork = URLInputFile(thumbnail_url)
-            await message.answer_audio(
-                audio=audio,
-                title=safe_title,
-                caption=f"🎵 {safe_title} - {artist}",
-                duration=duration,
-                thumbnail=artwork,
-                performer=artist or "Cyro",
-            )
+
+            try:
+                await message.answer_audio(
+                    audio=audio,
+                    title=safe_title,
+                    caption=f"🎵 {safe_title} - {artist}",
+                    duration=duration,
+                    thumbnail=artwork,
+                    performer=artist or "Cyro",
+                )
+            finally:
+                if os.path.exists(audio_file_path):
+                    os.remove(audio_file_path)
+                    logger.info(f"Deleted {audio_file_path}")
 
     except Exception as e:
         await message.reply(str(Messages.DOWNLOAD_ERROR))
-        logging.exception(f"Error handling SoundCloud URL: {e}")
+        logger.exception(f"Error handling SoundCloud URL: {e}")
