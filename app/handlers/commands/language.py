@@ -1,7 +1,7 @@
 from aiogram import F
 from aiogram.types import Message
 
-from app.keyboards.reply import get_language_keyboard
+from app.keyboards.inline import get_language_keyboard
 from app.texts import Messages
 
 from . import router

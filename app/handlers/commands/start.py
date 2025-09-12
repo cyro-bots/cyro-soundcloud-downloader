@@ -1,8 +1,8 @@
 from aiogram import F
 from aiogram.types import Message
 
-from app.database.models import User
-from app.keyboards.reply import get_language_keyboard
+from app.database import User
+from app.keyboards.inline import get_language_keyboard
 from app.texts import Commands, Messages
 
 from . import router
