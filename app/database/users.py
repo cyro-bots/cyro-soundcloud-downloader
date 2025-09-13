@@ -1,7 +1,15 @@
 from datetime import datetime
 from typing import Tuple, Type, TypeVar
 
-from sqlalchemy import Boolean, Column, DateTime, Integer, Select, String
+from sqlalchemy import (
+    BigInteger,
+    Boolean,
+    Column,
+    DateTime,
+    Integer,
+    Select,
+    String,
+)
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy.sql import func, select, update
 
@@ -16,7 +24,7 @@ class User(Base):
     __tablename__ = "users"
 
     id = Column(Integer, primary_key=True, index=True)
-    chat_id = Column(Integer, unique=True, nullable=False, index=True)
+    chat_id = Column(BigInteger, unique=True, nullable=False, index=True)
     username = Column(String(125), nullable=False)
     fullname = Column(String(125), nullable=False)
     language = Column(String(5), nullable=True)
