@@ -7,9 +7,8 @@ from sqlalchemy import (
     DateTime,
     Integer,
     String,
-    select,
-    update,
 )
+from sqlalchemy.sql import func, select, update
 
 from app.database import Base
 
@@ -23,10 +22,8 @@ class Channel(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     username = Column(String(125), unique=True, nullable=False, index=True)
-    created_at = Column(
-        DateTime(timezone=True), server_default="CURRENT_TIMESTAMP"
-    )
-    expire_at = Column(DateTime(timezone=True), nullable=True)
+    created_at = Column(DateTime, server_default=func.now())
+    expire_at = Column(DateTime, nullable=True)
     is_active = Column(Boolean, default=True)
 
     def __repr__(self):
